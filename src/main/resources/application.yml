@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    # TODO : 请修改自己的MySQL数据库地址
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test67?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  redis:
+    host: localhost
+    port: 6379
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+# TODO : 请修改为自己的账号
+spark_desk:
+  api-key: 375678d047edac273ff1ed00d3d4df97
+  api-secret: ZTNhNzg1ZDZiOGQ4MDI2ZDg1MGY4NzJi
+  api-id: 63c8a1d4
+  max-token: 2048

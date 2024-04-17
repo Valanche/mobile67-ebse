@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    image: openjdk:17
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: java -jar /app/target/mobile67-0.0.1-SNAPSHOT.jar
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: test67
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
